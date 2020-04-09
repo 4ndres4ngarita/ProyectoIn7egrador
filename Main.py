@@ -1,7 +1,7 @@
 #from Modelo import Esquina
-from MVC.Modelo import *
-from MVC.Fronter import *
-from MVC.Menu import *
+from model.vias import *
+from view.base import *
+from view.menu import *
 
 def main():
     esquina1 = Esquina( "33", "48")
@@ -23,7 +23,6 @@ def main():
 
     eleccionDemo = lanzarMenuPrincipal()
     print("la eleccion Demo fue " + eleccionDemo)
-    limpiarConsola()
     
 
 if __name__ == '__main__': main()

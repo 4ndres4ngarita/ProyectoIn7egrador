@@ -1,4 +1,7 @@
-from MVC.Fronter import limpiarConsola
+try:
+    from base import limpiarConsola
+except:
+    from view.base import limpiarConsola
 
 #region metodos generales
 def mostrarMenu( pMenuOpciones:dict):

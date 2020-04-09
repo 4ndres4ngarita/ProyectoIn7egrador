@@ -1,4 +1,5 @@
-from MVC.Modelo import *
+from model.base import *
+from model.vias import *
 import os
 
 def saludar():
