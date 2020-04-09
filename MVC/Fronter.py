@@ -1,9 +1,14 @@
 from MVC.Modelo import *
+import os
+
 def saludar():
     print("Bienvenido")
 
 def enter():
     print("\n")
+    
+def limpiarConsola():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def estanConectadasLasEsquinas( pEsquina1:Esquina, pEsquina2:Esquina):
     enter()

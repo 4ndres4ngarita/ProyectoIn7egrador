@@ -1,6 +1,8 @@
 #from Modelo import Esquina
 from MVC.Modelo import *
 from MVC.Fronter import *
+from MVC.Menu import *
+
 def main():
     esquina1 = Esquina( "33", "48")
     esquina2 = Esquina( "33", "36")
@@ -18,6 +20,10 @@ def main():
     esquina4 = Esquina("25","23")
     esquina2.agregarCarretera( esquina4, 23, 45, False)
     esquina1.agregarCarretera( esquina1, 20, 12, False, 1)
+
+    eleccionDemo = lanzarMenuPrincipal()
+    print("la eleccion Demo fue " + eleccionDemo)
+    limpiarConsola()
     
 
 if __name__ == '__main__': main()
