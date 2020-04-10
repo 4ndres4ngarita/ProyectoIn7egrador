@@ -38,7 +38,7 @@ class Carretera(Vertice):
     concurrencia:int
     estaCerrado:bool
     
-    def __init__(self, pNodoConectado:Nodo, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool, pSentido:int):
+    def __init__(self, pNodoConectado, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool=True, pSentido:int=0):
         Vertice.__init__( self, pNodoConectado, pDistancia, pSentido)
         self.concurrencia = pConcurrencia
         self.estaCerrado = pEstaCerrado

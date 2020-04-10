@@ -31,9 +31,7 @@ _mapaDeCarreteras = []
 
 def ejecutarFuncionAñadirCarreteras():
     limpiarConsola()
-    print("<Funcion 'Añadir Carreteras'>")
-    time.sleep(3)
-    limpiarConsola()
+    print("[Añadir Carreteras]")
     nuevaCarreraEsquina = input("ingrese Carrera de la nueva esquina :")
     nuevaCalleEsquina = input("ingrese Calle de la nueva esquina :")
     _mapaDeCarreteras.append( Esquina(nuevaCarreraEsquina, nuevaCalleEsquina))

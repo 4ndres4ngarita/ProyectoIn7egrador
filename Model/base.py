@@ -38,7 +38,7 @@ class Vertice:
         distancia: int
         sentido: int  # -1 Invertido, 0 Completo, 1 Simple
 
-        def __init__(self, pNodoConectado: Nodo, pDistancia: int, pSentido: int):
+        def __init__(self, pNodoConectado, pDistancia: int, pSentido: int):
             self.nodoConectado = pNodoConectado
             self.distancia = pDistancia
             self.sentido = pSentido
