@@ -1,7 +1,7 @@
 try:
-    from base import * #para probar el codigo es este mismo archivo
+    from Base import * #para probar el codigo es este mismo archivo
 except:
-    from model.base import *#para probar el codigo en otro archivo
+    from Model.Base import *#para probar el codigo en otro archivo
 
 class Esquina(Nodo):
     carrera:str

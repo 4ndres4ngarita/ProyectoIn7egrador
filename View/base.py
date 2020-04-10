@@ -1,5 +1,5 @@
-from model.base import *
-from model.vias import *
+from Model.Base import *
+from Model.Vias import *
 import os
 
 def saludar():

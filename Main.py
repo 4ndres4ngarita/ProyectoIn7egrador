@@ -1,9 +1,56 @@
 #from Modelo import Esquina
-from model.vias import *
-from view.base import *
-from view.menu import *
+from Model.Vias import *
+from View.Base import *
+from View.Menu import *
+import time
 
-def main():
+def controlMenuPrincipal( pEleccion):
+    if pEleccion is '1':
+        eleccion = interactuarConMenuCrearMapa()
+        controlMenuCrearMapa( eleccion)
+
+def controlMenuCrearMapa( pEleccion):
+    if pEleccion is '1':
+        ejecutarFuncionAñadirCarreteras()
+    elif pEleccion is '2':
+        ejecutarFuncionConectarCarreteras()
+    elif pEleccion is '3':
+        ejecutarFuncionListarEsquinas()
+
+def runApplication():
+    while True:
+        eleccionDemo = interactuarConMenuPrincipal()
+        if eleccionDemo is "q":
+            print("Hasta la Proxima <negros del ataud llendose>")
+            break
+        else:
+            controlMenuPrincipal(eleccionDemo)
+            limpiarConsola()
+
+_mapaDeCarreteras = []
+
+def ejecutarFuncionAñadirCarreteras():
+    limpiarConsola()
+    print("<Funcion 'Añadir Carreteras'>")
+    time.sleep(3)
+    limpiarConsola()
+    nuevaCarreraEsquina = input("ingrese Carrera de la nueva esquina :")
+    nuevaCalleEsquina = input("ingrese Calle de la nueva esquina :")
+    _mapaDeCarreteras.append( Esquina(nuevaCarreraEsquina, nuevaCalleEsquina))
+    limpiarConsola()
+    quiereRepetir = input("esquina añadida.\nDesea añadir otra? (s/n):")
+    if quiereRepetir is 's' or quiereRepetir is 'S' or quiereRepetir is '':
+        ejecutarFuncionAñadirCarreteras()
+
+def ejecutarFuncionConectarCarreteras():
+    print("<Funcion 'Conectar Carreteras'>")
+    time.sleep(3)
+
+def ejecutarFuncionListarEsquinas():
+    print("<Funcion 'Listar Esquinas'>")
+    time.sleep(3)
+
+def ejecutarDemostracionModelo():
     esquina1 = Esquina( "33", "48")
     esquina2 = Esquina( "33", "36")
     estanConectadasLasEsquinas( esquina1, esquina2)
@@ -21,8 +68,10 @@ def main():
     esquina2.agregarCarretera( esquina4, 23, 45, False)
     esquina1.agregarCarretera( esquina1, 20, 12, False, 1)
 
-    eleccionDemo = lanzarMenuPrincipal()
-    print("la eleccion Demo fue " + eleccionDemo)
+def main():
+    ejecutarDemostracionModelo()
+
+    runApplication()
     
 
 if __name__ == '__main__': main()
