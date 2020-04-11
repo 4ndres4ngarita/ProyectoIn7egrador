@@ -2,6 +2,8 @@
 from Model.Vias import *
 from View.Base import *
 from View.Menu import *
+from Model.Mapa import *
+from Model.Parada import *
 import time
 
 def controlMenuPrincipal( pEleccion):
@@ -51,25 +53,19 @@ def ejecutarFuncionListarEsquinas():
 def ejecutarDemostracionModelo():
     esquina1 = Esquina( "33", "48")
     esquina2 = Esquina( "33", "36")
-    estanConectadasLasEsquinas( esquina1, esquina2)
+    mapaDemo = Mapa("Ciudad1")
+    mapaDemo.añadirEsquina(esquina1)
+    mapaDemo.añadirEsquina(esquina2)
+    mapaDemo.conectarEsquinas( esquina1, esquina2, 10, 20, False, 1)
+    mapaDemo.conectarEsquinasPorId( esquina1.id, esquina2.id, 10, 20, False, -1)
+    punto1 = Parada("p1")
+    
+    
 
-    esquina1.agregarCarretera( esquina2, 12, 10)
-    imprimirNuevaConexion( esquina1, esquina2)
-
-    estanConectadasLasEsquinas( esquina1, esquina2)
-    estanConectados(esquina1,esquina2)
-    esquina3 = Esquina("35","34")
-    esquina1.agregarCarretera( esquina3, 23, 45, False, 1)
-    esquina3.agregarCarretera(esquina2, 23, 45, False, 1)
-
-    esquina4 = Esquina("25","23")
-    esquina2.agregarCarretera( esquina4, 23, 45, False)
-    esquina1.agregarCarretera( esquina1, 20, 12, False, 1)
+    
 
 def main():
     ejecutarDemostracionModelo()
-
-    runApplication()
     
 
 if __name__ == '__main__': main()

@@ -7,36 +7,40 @@ except:
 
 class Mapa(Nodo):
     esquinas:dict
-    rutas:dict
+    paradas:dict
     
-    def __init__(self, pId:str = "", pNodos:dict={}):
+    def __init__(self, pId:str = ""):
         Nodo.__init__( self, pId, "Mapa")
-        self.nodos = pNodos
-    
-    def añadirNodo(self, pNodo):
-        if not self.estaRegistradoElNodo():
-            self.nodos[pNodo.id] = pNodo
+        self.esquinas = {}
+        self.paradas = {}
 
-    def pedirNodo(self, pId:str):
-        if self.estaRegistradoElNodo(pId):
-            return self.Nodo[pId]
+    def añadirEsquina(self, pEsquina):
+        if not self.estaRegistradaLaEsquina( pEsquina.id):
+            self.esquinas[pEsquina.id] = pEsquina
+    
+    def añadirParada(self, pParada):
+        self.paradas[ pParada.id] = pParada
+
+    def pedirEsquinaPorId(self, pId:str):
+        if self.estaRegistradaLaEsquina(pId):
+            return self.esquinas[pId]
         else:
             return None
 
-    def estaRegistradoElNodo(self, pNodoId=str):
+    def estaRegistradaLaEsquina(self, pEsquinaId:str):
         estaRegistrado = False
-        for siguienteNodo in self.nodos:
-            if pNodoId == siguienteNodo:
+        i=1
+        for siguienteEsquina in self.esquinas:
+            i+=1
+            if pEsquinaId == siguienteEsquina:
                 estaRegistrado = True
                 break
         return estaRegistrado
-    
-    def conectarNodos(self, pIdNodo1, pIdNodo2, pVertice):
-        pass
 
-esquina1 = Esquina( "33", "48")
-esquina2 = Esquina( "33", "36")
-mapaDemo = Mapa()
-mapaDemo.añadirNodo(esquina1)
-mapaDemo.añadirNodo(esquina1)
-#carretera1 = Carretera( "cra33cll36", 12, 10)
+    def conectarEsquinas(self, pNodo1:Esquina, pNodo2:Esquina, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool = True, pSentido:int = 0):
+        pNodo1.agregarCarretera(pNodo2, pDistancia, pConcurrencia, pEstaCerrado, pSentido)
+        pNodo2.agregarCarretera(pNodo1, pDistancia, pConcurrencia, pEstaCerrado, pSentido)
+
+    def conectarEsquinasPorId(self, pEsquina1:str, pEsquina2:str, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool = True, pSentido:int = 0):
+        self.pedirEsquinaPorId( pEsquina1).agregarCarretera( self.pedirEsquinaPorId( pEsquina2), pDistancia, pConcurrencia, pSentido)
+        self.pedirEsquinaPorId( pEsquina2).agregarCarretera( self.pedirEsquinaPorId( pEsquina1), pDistancia, pConcurrencia, (pSentido*-1))

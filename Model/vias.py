@@ -15,16 +15,14 @@ class Esquina(Nodo):
     def agregarCarretera(self, pNodo, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool=True, pSentido:int = 0):
         nuevaCarretera = Carretera( pNodo, pDistancia, pConcurrencia, pEstaCerrado, pSentido)
         self.vertices.append( nuevaCarretera)
-        if self.estaConectadoCon(pNodo) and not pNodo.estaConectadoCon(self):
-            pNodo.agregarCarretera(self, pDistancia, pConcurrencia, pEstaCerrado, (pSentido*-1))
                
     
-    def estaConectadoCon(self, pNodo):
+    def estaConectadoCon(self, pNodoId):
         noEstaConectado = True
         carretera_i = 1
         while noEstaConectado and carretera_i <= len(self.vertices):
             carreteraSiguiente = self.vertices[carretera_i-1]
-            if carreteraSiguiente.nodoConectado.id == pNodo.id:
+            if carreteraSiguiente.nodoConectado.id == pNodoId:
                 noEstaConectado = False
             else:
                 carretera_i += 1
