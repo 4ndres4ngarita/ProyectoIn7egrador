@@ -1,17 +1,17 @@
-#from Modelo import Esquina
-from Model.Vias import *
-from View.Base import *
-from View.Menu import *
-from Model.Mapa import *
-from Model.Parada import *
+#from modelo import Esquina
+from model.vias import *
+from view.base import *
+from view.menu import *
+from model.Mapa import *
+from model.Parada import *
 import time
 
-def controlMenuPrincipal( pEleccion):
+def controlmenuPrincipal( pEleccion):
     if pEleccion is '1':
-        eleccion = interactuarConMenuCrearMapa()
-        controlMenuCrearMapa( eleccion)
+        eleccion = interactuarConmenuCrearMapa()
+        controlmenuCrearMapa( eleccion)
 
-def controlMenuCrearMapa( pEleccion):
+def controlmenuCrearMapa( pEleccion):
     if pEleccion is '1':
         ejecutarFuncionAñadirCarreteras()
     elif pEleccion is '2':
@@ -21,12 +21,12 @@ def controlMenuCrearMapa( pEleccion):
 
 def runApplication():
     while True:
-        eleccionDemo = interactuarConMenuPrincipal()
+        eleccionDemo = interactuarConmenuPrincipal()
         if eleccionDemo is "q":
             print("Hasta la Proxima <negros del ataud llendose>")
             break
         else:
-            controlMenuPrincipal(eleccionDemo)
+            controlmenuPrincipal(eleccionDemo)
             limpiarConsola()
 
 _mapaDeCarreteras = []
@@ -50,7 +50,7 @@ def ejecutarFuncionListarEsquinas():
     print("<Funcion 'Listar Esquinas'>")
     time.sleep(3)
 
-def ejecutarDemostracionModelo():
+def ejecutarDemostracionmodelo():
     esquina1 = Esquina( "33", "48")
     esquina2 = Esquina( "33", "36")
     mapaDemo = Mapa("Ciudad1")
@@ -65,7 +65,7 @@ def ejecutarDemostracionModelo():
     
 
 def main():
-    ejecutarDemostracionModelo()
+    ejecutarDemostracionmodelo()
     
 
 if __name__ == '__main__': main()

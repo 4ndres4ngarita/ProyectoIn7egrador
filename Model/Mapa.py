@@ -1,9 +1,9 @@
 try:
-    from Vias import *
-    from Base import * #para probar el codigo es este mismo archivo
+    from vias import *
+    from base import * #para probar el codigo es este mismo archivo
 except:
-    from Model.Vias import *
-    from Model.Base import *#para probar el codigo en otro archivo
+    from model.vias import *
+    from model.base import *#para probar el codigo en otro archivo
 
 class Mapa(Nodo):
     esquinas:dict
@@ -22,25 +22,24 @@ class Mapa(Nodo):
         self.paradas[ pParada.id] = pParada
 
     def pedirEsquinaPorId(self, pId:str):
-        if self.estaRegistradaLaEsquina(pId):
-            return self.esquinas[pId]
-        else:
-            return None
+        return self.esquinas[pId]
 
     def estaRegistradaLaEsquina(self, pEsquinaId:str):
         estaRegistrado = False
-        i=1
         for siguienteEsquina in self.esquinas:
-            i+=1
             if pEsquinaId == siguienteEsquina:
                 estaRegistrado = True
                 break
         return estaRegistrado
 
-    def conectarEsquinas(self, pNodo1:Esquina, pNodo2:Esquina, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool = True, pSentido:int = 0):
-        pNodo1.agregarCarretera(pNodo2, pDistancia, pConcurrencia, pEstaCerrado, pSentido)
-        pNodo2.agregarCarretera(pNodo1, pDistancia, pConcurrencia, pEstaCerrado, pSentido)
+    def conectarEsquinas(self, pNodo1:Esquina, pNodo2:Esquina, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool, pSentidoCardinal:int, pDireccionVectorial:int):
+        pNodo1.agregarCarretera(pNodo2, pDistancia, pConcurrencia, pEstaCerrado, pSentidoCardinal, pDireccionVectorial)
+        pNodo2.agregarCarretera(pNodo1, pDistancia, pConcurrencia, pEstaCerrado, (pSentidoCardinal*-1), (pDireccionVectorial*-1))
 
-    def conectarEsquinasPorId(self, pEsquina1:str, pEsquina2:str, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool = True, pSentido:int = 0):
-        self.pedirEsquinaPorId( pEsquina1).agregarCarretera( self.pedirEsquinaPorId( pEsquina2), pDistancia, pConcurrencia, pSentido)
-        self.pedirEsquinaPorId( pEsquina2).agregarCarretera( self.pedirEsquinaPorId( pEsquina1), pDistancia, pConcurrencia, (pSentido*-1))
+    def conectarEsquinasPorId(self, pEsquina1:str, pEsquina2:str, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool, pSentidoCardinal:int, pDireccionVectorial:int):
+        esquina1 = self.pedirEsquinaPorId( pEsquina1)
+        esquina2 = self.pedirEsquinaPorId( pEsquina2)
+        carreteraDe1a2 = Carretera( esquina2, pDistancia, pConcurrencia, pEstaCerrado, pSentidoCardinal, pDireccionVectorial)
+        carreteraDe2a1 = Carretera( esquina1, pDistancia, pConcurrencia, pEstaCerrado, (pSentidoCardinal*-1), (pDireccionVectorial*-1))
+        esquina1.agregarCarretera(carreteraDe1a2)
+        esquina2.agregarCarretera(carreteraDe2a1)

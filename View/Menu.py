@@ -1,49 +1,49 @@
 try:
-    from Base import limpiarConsola
+    from base import limpiarConsola
 except:
-    from View.Base import limpiarConsola
+    from view.base import limpiarConsola
 
 #region metodos generales
-def mostrarMenu( pMenuOpciones:dict):
-    for clave in pMenuOpciones:
+def mostrarmenu( pmenuOpciones:dict):
+    for clave in pmenuOpciones:
         tecla = clave
-        opcion = pMenuOpciones[clave]
+        opcion = pmenuOpciones[clave]
         print("   ["+str(tecla)+"]: "+opcion)
         del tecla
         del opcion
     
-def capturarEleccion(pOpcionesMenu:dict):
+def capturarEleccion(pOpcionesmenu:dict):
     eleccion = input(">>")
-    if not estaEleccionEsValida( eleccion, pOpcionesMenu):
+    if not estaEleccionEsValida( eleccion, pOpcionesmenu):
         limpiarConsola()
         print("Opcion no valida - por favor intente de nuevo")
-        mostrarMenu(pOpcionesMenu)
-        eleccion = capturarEleccion( pOpcionesMenu)
+        mostrarmenu(pOpcionesmenu)
+        eleccion = capturarEleccion( pOpcionesmenu)
     return eleccion
 
-def estaEleccionEsValida( pEleccion, pOpcionesMenu:dict):
+def estaEleccionEsValida( pEleccion, pOpcionesmenu:dict):
     laOpcionEsValida = False
-    for cadaOpcion in pOpcionesMenu:
+    for cadaOpcion in pOpcionesmenu:
         unaOpcion = str(cadaOpcion)
         if pEleccion == unaOpcion:
             laOpcionEsValida = True
             break
     return laOpcionEsValida
 
-def interactuarConMenu( pOpcionesMenu:dict):
-    mostrarMenu( pOpcionesMenu)
-    eleccion = capturarEleccion( pOpcionesMenu)
-    del pOpcionesMenu
+def interactuarConmenu( pOpcionesmenu:dict):
+    mostrarmenu( pOpcionesmenu)
+    eleccion = capturarEleccion( pOpcionesmenu)
+    del pOpcionesmenu
     limpiarConsola()
     return eleccion
 
 #endregion
 
-def interactuarConMenuPrincipal():
-    opcionesMenu = {1:"crear mapa",'q':"salir"}
-    return interactuarConMenu( opcionesMenu)
+def interactuarConmenuPrincipal():
+    opcionesmenu = {1:"crear mapa",'q':"salir"}
+    return interactuarConmenu( opcionesmenu)
 
 #region op1:crear mapa
-def interactuarConMenuCrearMapa():
-    opcionesMenu = {1:"añadir carreteras",2:"conectar carreteras",3:"listar esquinas",'q':" <- volver"}
-    return interactuarConMenu( opcionesMenu)
+def interactuarConmenuCrearMapa():
+    opcionesmenu = {1:"añadir carreteras",2:"conectar carreteras",3:"listar esquinas",'q':" <- volver"}
+    return interactuarConmenu( opcionesmenu)

@@ -1,22 +1,24 @@
 try:
-    from Base import * #para probar el codigo es este mismo archivo
+    from base import * #para probar el codigo es este mismo archivo
 except:
-    from Model.Base import *#para probar el codigo en otro archivo
+    from model.base import *#para probar el codigo en otro archivo
 
 class Esquina(Nodo):
     carrera:str
     calle:str
+    anexo:str
 
-    def __init__(self, pCarrera:str, pCalle:str):
-        Nodo.__init__( self, ("cra"+pCarrera+"cll"+pCalle), "Esquina")
+    def __init__(self, pCarrera:str, pCalle:str, pAnexo:str=None):
+        if pAnexo is None:
+            Nodo.__init__( self, ("cra"+pCarrera+"cll"+pCalle), "Esquina")
+        else:
+            Nodo.__init__( self, ("cra"+pCarrera+"cll"+pCalle+pAnexo), "Esquina")
         self.carrera = pCarrera
         self.calle = pCalle
 
-    def agregarCarretera(self, pNodo, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool=True, pSentido:int = 0):
-        nuevaCarretera = Carretera( pNodo, pDistancia, pConcurrencia, pEstaCerrado, pSentido)
-        self.vertices.append( nuevaCarretera)
-               
-    
+    def agregarCarretera(self, pCarretera):
+        self.vertices.append( pCarretera)
+
     def estaConectadoCon(self, pNodoId):
         noEstaConectado = True
         carretera_i = 1
@@ -36,7 +38,7 @@ class Carretera(Vertice):
     concurrencia:int
     estaCerrado:bool
     
-    def __init__(self, pNodoConectado, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool=True, pSentido:int=0):
-        Vertice.__init__( self, pNodoConectado, pDistancia, pSentido)
+    def __init__(self, pNodoConectado, pDistancia:int, pConcurrencia:int, pEstaCerrado:bool, pSentidoCardinal:int, pDireccionVectorial:int):
+        Vertice.__init__( self, pNodoConectado, pDistancia, pSentidoCardinal, pDireccionVectorial)
         self.concurrencia = pConcurrencia
         self.estaCerrado = pEstaCerrado
