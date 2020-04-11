@@ -8,11 +8,8 @@ class Nodo:
         self.tipo = pTipo
         self.vertices = []
 
-    def conectarNodo(self, pNodo, pDistancia: int, pSentido: int = 0):
-        nuevoVertice = Vertice(pNodo, pDistancia, pSentido)
-        self.vertices.append(nuevoVertice)
-        if self.estaConectadoCon(pNodo) and not pNodo.estaConectadoCon(self):
-            pNodo.conectarNodo(self, pDistancia, (pSentido * -1))
+    def añadirVertice(self, pVertice):
+        self.vertices.append(pVertice)
 
     def estaConectadoCon(self, pNodo):
         noEstaConectado = True
@@ -28,17 +25,18 @@ class Nodo:
 
         return estaConectado
 
-    def eliminarVertice(self, pPosicionVertice:int=None):
-        if pPosicionVertice is None :
-            pPosicionVertice = len(self.vertices)-1
+    def eliminarVertice(self, pPosicionVertice:int):
         del self.vertices[pPosicionVertice]
 
 class Vertice:
         nodoConectado: Nodo
         distancia: int
-        sentido: int  # -1 Invertido, 0 Completo, 1 Simple
+        sentidoCardinal: int
+        direccionVectorial:int # -1 Invertido, 0 Completo, 1 Simple
 
-        def __init__(self, pNodoConectado, pDistancia: int, pSentido: int):
+        def __init__(self, pNodoConectado, pDistancia: int, pSentidoCardinal: int, pDireccionVectorial:int):
             self.nodoConectado = pNodoConectado
             self.distancia = pDistancia
-            self.sentido = pSentido
+            self.sentidoCardinal = pSentidoCardinal
+            self.direccionVectorial = pDireccionVectorial
+            

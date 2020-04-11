@@ -56,8 +56,11 @@ def ejecutarDemostracionModelo():
     mapaDemo = Mapa("Ciudad1")
     mapaDemo.añadirEsquina(esquina1)
     mapaDemo.añadirEsquina(esquina2)
-    mapaDemo.conectarEsquinas( esquina1, esquina2, 10, 20, False, 1)
-    mapaDemo.conectarEsquinasPorId( esquina1.id, esquina2.id, 10, 20, False, -1)
+    esquina1 = None
+    esquina2=None
+    esquina1 = mapaDemo.pedirEsquinaPorId("cra33cll48")
+    esquina2 = mapaDemo.pedirEsquinaPorId("cra33cll36")
+    mapaDemo.conectarEsquinasPorId(esquina1.id, esquina2.id, 10, 12, False,1,0)
     punto1 = Parada("p1")
     
     
