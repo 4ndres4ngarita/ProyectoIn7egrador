@@ -1,5 +1,5 @@
 from model.base import *
-from model.vias import *
+from model.tiposDeNodos import *
 import os
 
 def saludar():

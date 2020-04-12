@@ -1,9 +1,8 @@
 #from modelo import Esquina
-from model.vias import *
+from model.tiposDeNodos import *
 from view.base import *
 from view.menu import *
-from model.Mapa import *
-from model.Parada import *
+from model.mapa import *
 import time
 
 def controlmenuPrincipal( pEleccion):
@@ -51,18 +50,19 @@ def ejecutarFuncionListarEsquinas():
     time.sleep(3)
 
 def ejecutarDemostracionmodelo():
-    esquina1 = Esquina( "33", "48")
-    esquina2 = Esquina( "33", "36")
-    mapaDemo = Mapa("Ciudad1")
-    mapaDemo.añadirEsquina(esquina1)
-    mapaDemo.añadirEsquina(esquina2)
-    mapaDemo.conectarEsquinas( esquina1, esquina2, 10, 20, False, 1)
-    mapaDemo.conectarEsquinasPorId( esquina1.id, esquina2.id, 10, 20, False, -1)
-    punto1 = Parada("p1")
-    
-    
+    e1 = Esquina("1","n1")
+    e2 = Esquina("2","n2")
+    m1 = Mapa( "ciudad1")
+    m1.añadirEsquina(e1)
+    m1.añadirEsquina(e2)
+    m1.conectarEsquinasPorCodigo( "1","2",10,12,False,1,1)
+    m1.conectarEsquinasPorCodigo( "1","2",20,13,False,2,0)
+    m1.conectarEsquinasPorCodigo( "1","2",30,14,False,3,-1)
+    p1 = Parada("1","LaTiendaDeMarta")
+    m1.añadirParada(p1)
+    m1.conectarParada( p1.codigo, e1.codigo, e2.codigo, 2)
+    m1
 
-    
 
 def main():
     ejecutarDemostracionmodelo()
