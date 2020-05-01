@@ -53,9 +53,9 @@ class Conexion:
     __nodoConectado: Nodo
     __distancia: int
     __concurrencia:int
-    __estaCerrado:bool
     __sentidoCardinal: int
     __direccionVectorial:int
+    __estaCerrado:bool
     __numeroDeConexion:int
 
     def __init__(self):
@@ -108,84 +108,4 @@ class Conexion:
     
     def setNumeroDeConexion( self, nuevoNumeroDeConexion:int):
         self.__numeroDeConexion = nuevoNumeroDeConexion
-
-class ApiladorDeConexionesDeNodos:
-
-    def __init__(self, nodoBase:Nodo = None):
-        self.__nodoBase = nodoBase
-
-    def apilarConexionAlNodoBase(self, conexionNueva:Conexion):
-        ApiladorDeConexionesDeNodos.añadirConexion( self.__nodoBase, conexionNueva)
-
-    @staticmethod
-    def apilarConexion( nodoConConexiones:Nodo, conexionNueva:Conexion):
-        ApiladorDeConexionesDeNodos.__apilarConexion( nodoConConexiones, conexionNueva)      
-
-    @staticmethod
-    def __apilarConexion(nodoConConexiones:Nodo, conexionNueva:Conexion):
-        nodoConConexiones.getListaDeConexiones().append( conexionNueva)
-
-class ContadorDeConexionesDeNodos:
-
-    @staticmethod
-    def contarTodasLasConexiones( nodoConConexiones:Nodo):
-        return nodoConConexiones.getListaDeConexiones().count()
-
-    @staticmethod
-    def contarConexionesCon( nodoConConexiones:Nodo, nodoBuscado:Nodo):
-        numeroDeConexiones = 0
-        
-        for cadaConexion in nodoConConexiones.getlistaDeConexiones():
-            nodoDeCadaConexion = cadaConexion.getNodoConectado()
-            elNodoDeUnaConexion = ComparadorDeNodos( nodoDeCadaConexion)
-            if elNodoDeUnaConexion.esIgualAl( nodoBuscado):
-                numeroDeConexiones += 1
-
-        return numeroDeConexiones
-
-class ComparadorDeNodos:
-
-    def __init__(self, nodoBase:Nodo = None):
-        self.__nodoBase = nodoBase
-
-    def esIgualAl(self, nodoComparado:Nodo):
-        return ComparadorDeNodos.sonIgualesLosNodos( self.__nodoBase, nodoComparado)
-    
-    @staticmethod
-    def sonIgualesLosNodos( unNodo:Nodo, otroNodo:Nodo):
-        return ComparadorDeNodos.__sonIguales( unNodo, otroNodo)
-    
-    @staticmethod
-    def __sonIguales( unNodo:Nodo, otroNodo:Nodo):
-        return (( unNodo.getCodigo() == otroNodo.getCodigo()) and
-            (unNodo.getNombre() == otroNodo.getNombre()) and
-            (unNodo.getTipoDelNodo() == otroNodo.getTipoDelNodo()) and
-            (unNodo.getListaDeConexiones() == otroNodo.getListaDeConexiones()))
-
-class BuscadorDeConexiones:
-
-    __listaDeConexionesEncontradas = []
-
-    def __init__(self, nodoBase:Nodo):
-        self.__nodoBase = nodoBase
-
-    def buscarConexionesCon(self, nodoBuscado:Nodo):
-        BuscadorDeConexiones.buscarConexionesEntre( self.__nodoBase, nodoBuscado)
-
-    @staticmethod
-    def buscarConexionesEntre( nodoConConexiones:Nodo, nodoBuscado:Nodo):
-        for unaConexion in nodoConConexiones.getListaDeConexiones():
-            unNodoDeUnaConexion = unaConexion.getNodoConectado()
-            comparandoUnNodo = ComparadorDeNodos( unNodoDeUnaConexion)
-            if comparandoUnNodo.esIgual( nodoBuscado):
-                BuscadorDeConexiones.__añadirConexionEncontrada( unaConexion)
-
-    @staticmethod
-    def getListaDeConexionesEncontradas( self):
-        return BuscadorDeConexiones.__listaDeConexionesEncontradas
-    
-    def __añadirConexionEncontrada(self, conexionEncontrada:Conexion):
-        BuscadorDeConexiones.__listaDeConexionesEncontradas.append( conexionEncontrada)
-
-#Region pruebas
 

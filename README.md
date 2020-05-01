@@ -1,8 +1,6 @@
-Refactorizacion Solo de base.py - setters y getters
+Refactorizacion base.py - buscadores y comparadores
 =
 
-   *Se creó el archivo sentidosGeoespaciales.py donde estan las clases o posibilidades de los atributos direccionCardinal y direccionVectorial de la clase Conexion.Aquí se implementó el reemplazo de constantes numericas por "variables constantes".
-   *los atributos de las clases en el archivo base.py pasaron a ser privadas, junto con setters y getters.
-   *Se trató de refactorizar usando y evidenciando el concepto de Responsabilidad Unica
-   *conexion.numero fue cambiado por conexion.numeroDeConexion
-   *Se eliminó cierto codigo en este commit en el archivo base.py, sin embargo, esta en realidad esta reservado para hacerle una refactorizacion, debido a cuestiones de abstraccion, segun Andres :)
+   *se volvió a refactorizar base.py
+   *nuevo comparadoresDeNodos.py!: compara atributos con parametros de nodos completos o con valores de atributos
+   *nuevo buscadoresDeConexiones.py!: todas sus clases, por el momento, se basan en una sola interfaz. algunas implementaciones solo requieren de la lista ( listas de nodo en crudo) del los nodos y otro requieren listas del producto de las implementaciones anteriores (listas de nodos procesadas).
