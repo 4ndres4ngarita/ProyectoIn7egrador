@@ -1,0 +1,128 @@
+{
+    "nodos" : [
+        {
+            "codigo":"1",
+            "nombre":"n1",
+            "tipo":"nodo"
+        },
+        {
+            "codigo":"2",
+            "nombre":"n2",
+            "tipo":"nodo"
+        },
+        {
+            "codigo":"3",
+            "nombre":"n3",
+            "tipo":"nodo"
+        },
+        {
+            "codigo":"4",
+            "nombre":"n4",
+            "tipo":"nodo"
+        }
+    ],
+
+    "conexiones":[
+        {
+            "nodo":"1",
+            "lista":[
+                {
+                    "nodoConectado" : "2",
+                    "distancia":5,
+                    "concurrencia":10,
+                    "sentidoCardinal":3,
+                    "direccionVectorial":0,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                },
+                {
+                    "nodoConectado" : "3",
+                    "distancia":14,
+                    "concurrencia":37,
+                    "sentidoCardinal":-1,
+                    "direccionVectorial":1,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                },
+                {
+                    "nodoConectado" : "1",
+                    "distancia":22,
+                    "concurrencia":16,
+                    "sentidoCardinal":0,
+                    "direccionVectorial":1,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                }
+            ]
+        },
+        {
+            "nodo":"2",
+            "lista":[
+                {
+                    "nodoConectado" : "1",
+                    "distancia":5,
+                    "concurrencia":10,
+                    "sentidoCardinal":3,
+                    "direccionVectorial":0,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                },
+                {
+                    "nodoConectado" : "3",
+                    "distancia":4,
+                    "concurrencia":35,
+                    "sentidoCardinal":-2,
+                    "direccionVectorial":1,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                },
+                {
+                    "nodoConectado" : "4",
+                    "distancia":37,
+                    "concurrencia":12,
+                    "sentidoCardinal":1,
+                    "direccionVectorial":0,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                }
+            ]
+        },
+        {
+            "nodo":"3",
+            "lista":[
+                {
+                    "nodoConectado" : "1",
+                    "distancia":14,
+                    "concurrencia":37,
+                    "sentidoCardinal":-1,
+                    "direccionVectorial":-1,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                },
+                {
+                    "nodoConectado" : "2",
+                    "distancia":4,
+                    "concurrencia":35,
+                    "sentidoCardinal":2,
+                    "direccionVectorial":-1,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                }
+            ]
+        },
+        {
+            "nodo":"4",
+            "lista":[
+                {
+                    "nodoConectado" : "2",
+                    "distancia":37,
+                    "concurrencia":12,
+                    "sentidoCardinal":0,
+                    "direccionVectorial":0,
+                    "estaCerrado":false,
+                    "numeroDeConexion":1
+                }
+            ]
+        }
+    ]
+}
