@@ -2,29 +2,29 @@
 from model.tiposDeNodos import *
 from view.base import *
 from view.menu import *
-from model.mapa import *
 import time
 
 def controlmenuPrincipal( pEleccion):
-    if pEleccion is '1':
+    if pEleccion == '1':
         eleccion = interactuarConmenuCrearMapa()
         controlmenuCrearMapa( eleccion)
 
 def controlmenuCrearMapa( pEleccion):
-    if pEleccion is '1':
+    if pEleccion == '1':
         ejecutarFuncionAñadirCarreteras()
-    elif pEleccion is '2':
+    elif pEleccion == '2':
         ejecutarFuncionConectarCarreteras()
-    elif pEleccion is '3':
+    elif pEleccion == '3':
         ejecutarFuncionListarEsquinas()
 
 def runApplication():
     while True:
         eleccionDemo = interactuarConmenuPrincipal()
-        if eleccionDemo is "q":
+        if eleccionDemo == "q":
             print("Hasta la Proxima <negros del ataud llendose>")
             break
         else:
+            
             controlmenuPrincipal(eleccionDemo)
             limpiarConsola()
 
@@ -38,7 +38,7 @@ def ejecutarFuncionAñadirCarreteras():
     _mapaDeCarreteras.append( Esquina(nuevaCarreraEsquina, nuevaCalleEsquina))
     limpiarConsola()
     quiereRepetir = input("esquina añadida.\nDesea añadir otra? (s/n):")
-    if quiereRepetir is 's' or quiereRepetir is 'S' or quiereRepetir is '':
+    if quiereRepetir == 's' or quiereRepetir == 'S' or quiereRepetir == '':
         ejecutarFuncionAñadirCarreteras()
 
 def ejecutarFuncionConectarCarreteras():

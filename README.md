@@ -1,6 +1,7 @@
-Refactorizacion base.py - buscadores y comparadores
+cambio Conexiones por Enlaces
 =
 
-   *se volvió a refactorizar base.py
-   *nuevo comparadoresDeNodos.py!: compara atributos con parametros de nodos completos o con valores de atributos
-   *nuevo buscadoresDeConexiones.py!: todas sus clases, por el momento, se basan en una sola interfaz. algunas implementaciones solo requieren de la lista ( listas de nodo en crudo) del los nodos y otro requieren listas del producto de las implementaciones anteriores (listas de nodos procesadas).
+   *se creo una carpeta, llamada /test con el fin de "depurar" el codigo (me refiero a poner un escenario, e ir corrigiendo errores mientras se ejecuta la prueba).
+   *se estructuro un primer escenario (grafo) para probar las nuevas clases de buscadores y comparadores.
+   *el escenario se estructuró en un .json, lo cual fue necesario hacer una implementacion para abstraer los datos en dicho formato en objetos.
+   *en el archivo GrafosEscenarios.vsdx se pretende almacenas los diagramas de todos los casos que se deseen probar.
